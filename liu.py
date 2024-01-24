@@ -34,70 +34,36 @@ def add_resource_to_event(event, d, agent1s_mapping, agent2s_mapping, agent3s):
 def transform_to_liu(event, d, agent1s_mapping, agent2s_mapping, agent3s):
     add_resource_to_event(event, d, agent1s_mapping, agent2s_mapping, agent3s)
     activity = event._dict[CONCEPT]
-    if activity.startswith("a"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = "a" + activity[2:]
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-            else:
-                event._dict[LIU_MESSAGE_REC] = "a"
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-        else:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "a" + activity[2:]
-            else:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "a"
-    elif activity.startswith("b"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = "b" + activity[2:]
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-            else:
-                event._dict[LIU_MESSAGE_REC] = "b"
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-        else:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "b" + activity[2:]
-            else:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "b"
+    if activity.startswith("a") and "R" not in activity and "A" not in activity and "B" not in activity:
+        set_message_liu(activity, event, "a")
+    elif activity.startswith("bR"):
+        set_message_liu(activity, event, "bR")
+    elif activity.startswith("aR"):
+        set_message_liu(activity, event, "aR")
+    elif activity.startswith("b") and "R" not in activity:
+        set_message_liu(activity, event, "b")
     elif activity.startswith("c"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = "c" + activity[2:]
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-            else:
-                event._dict[LIU_MESSAGE_REC] = "c"
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-        else:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "c" + activity[2:]
-            else:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "c"
+        set_message_liu(activity, event, "c")
     elif activity.startswith("d"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = "d" + activity[2:]
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-            else:
-                event._dict[LIU_MESSAGE_REC] = "d"
-                event._dict[LIU_MESSAGE_SENT] = LIU_NULL
-        else:
-            if len(activity) > 2:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "d" + activity[2:]
-            else:
-                event._dict[LIU_MESSAGE_REC] = LIU_NULL
-                event._dict[LIU_MESSAGE_SENT] = "d"
+        set_message_liu(activity, event, "d")
+    elif activity.startswith("ackA"):
+        set_message_liu(activity, event, "ackA")
+    elif activity.startswith("ackB"):
+        set_message_liu(activity, event, "ackB")
     else:
         event._dict[LIU_MESSAGE_SENT] = LIU_NULL
         event._dict[LIU_MESSAGE_REC] = LIU_NULL
     return event
+
+
+def set_message_liu(activity, event, act):
+    if "?" in activity:
+        event._dict[LIU_MESSAGE_REC] = act
+        event._dict[LIU_MESSAGE_SENT] = LIU_NULL
+    else:
+        event._dict[LIU_MESSAGE_REC] = LIU_NULL
+        event._dict[LIU_MESSAGE_SENT] = act
+
 
 def discover_crosspn(miner_input):
     dataset_name, miner, i, r = miner_input

@@ -22,7 +22,7 @@ srmspes_all = []
 nrmses_all = []
 nmaes_all = []
 results = define_results_dict()
-d = "IP-1"
+d = "IP-8"
 precisions = {d.name: [] for d in Miner}
 precisions_true = []
 recalls = {d.name: [] for d in Miner}
@@ -44,22 +44,22 @@ conversion_parameters = dict(deepcopy=False)
 original_i = -1
 original_r = 1
 log = log_converter.apply(log_read, variant=log_converter.TO_EVENT_LOG, parameters=conversion_parameters)
-if Miner.health in MINERS:
-    print(f"{d} - Original log: HEALTH starting...\n")
-    miner = Miner.health.name
 
-    convert_to_xes_with_meta_transformations(log, d, agent1s_mapping, agent2s_mapping, agent3s,
-                                                 original_i, original_r, miner)
-    execute_evaluate_timed_collaboration_miner(
-            sample=log,
-            results=results,
-            precisions=precisions,
-            recalls=recalls,
-            timed_miner_function=discover_crosspn,
-            miner_input=(d, miner, original_i, original_r),
-            d=d,
-            i=original_i,
-            r=original_r,
-            miner=miner,
-            only_alignments=True
-        )
+
+miner = Miner.ocpd.name
+
+true_ocel = convert_to_ocel_with_transformations(log, d, agent1s_mapping, agent2s_mapping, agent3s,
+                                                             original_i, original_r)
+execute_evaluate_timed_collaboration_miner(
+                sample=log,
+                results=results,
+                precisions=precisions,
+                recalls=recalls,
+                timed_miner_function=discover_ocpd,
+                miner_input=(true_ocel, d, original_i, original_r),
+                d=d,
+                i=original_i,
+                r=original_r,
+                miner=miner,
+                only_alignments=True
+            )

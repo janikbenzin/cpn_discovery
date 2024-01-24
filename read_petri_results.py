@@ -1,7 +1,12 @@
+import os
+
 import pandas as pd
 import pickle
+from generic_transformation import *
+import pm4py
 
 from parameters import *
+from util import *
 import pickle
 
 import pandas as pd
@@ -9,42 +14,82 @@ import pandas as pd
 from parameters import *
 
 MODELS = 12
+PICKLE = False
 DATA = [f"IP-{i + 1}" for i in range(MODELS)]
 MINERS = [Miner.ocpd, Miner.health, Miner.colliery]
 EXPERIMENT = "PetriNetsPaper2024_alignments_original"
 
-with open(RESULT_PATH + f"nested_results_{EXPERIMENT}.pickle", "rb") as file:
-    nested_pool_results = pickle.load(file)
 
-# coverages_all = [item for d in nested_pool_results for item in d[LISTS][0]]
-# smapes_all = [item for d in nested_pool_results for item in d[LISTS][1]]
-# srmspes_all = [item for d in nested_pool_results for item in d[LISTS][2]]
-# nrmses_all = [item for d in nested_pool_results for item in d[LISTS][3]]
-# nmaes_all = [item for d in nested_pool_results for item in d[LISTS][4]]
-precisions_true = [item for d in nested_pool_results for item in d[LISTS][5]]
-recalls_true = [item for d in nested_pool_results for item in d[LISTS][6]]
-# dfgs_original = {k: v for d in nested_pool_results  for k, v in d[DICTS][0].items()}
-# dfgs_sample = {k: v for d in nested_pool_results  for k, v in d[DICTS][1].items()}
-# sample_error_metrics = {k: v for d in nested_pool_results  for k, v in d[DICTS][2].items()}
-results_temp = [{k: v for k, v in d[DICTS][3].items()} for d in nested_pool_results]
 results = define_results_dict()
+if PICKLE:
+    with open(RESULT_PATH + f"nested_results_{EXPERIMENT}.pickle", "rb") as file:
+        nested_pool_results = pickle.load(file)
 
-for d in results_temp:
-    for k in d:
-        for k2 in d[k]:
-            results[k][k2] += d[k][k2]
+    # coverages_all = [item for d in nested_pool_results for item in d[LISTS][0]]
+    # smapes_all = [item for d in nested_pool_results for item in d[LISTS][1]]
+    # srmspes_all = [item for d in nested_pool_results for item in d[LISTS][2]]
+    # nrmses_all = [item for d in nested_pool_results for item in d[LISTS][3]]
+    # nmaes_all = [item for d in nested_pool_results for item in d[LISTS][4]]
+    precisions_true = [item for d in nested_pool_results for item in d[LISTS][5]]
+    recalls_true = [item for d in nested_pool_results for item in d[LISTS][6]]
+    # dfgs_original = {k: v for d in nested_pool_results  for k, v in d[DICTS][0].items()}
+    # dfgs_sample = {k: v for d in nested_pool_results  for k, v in d[DICTS][1].items()}
+    # sample_error_metrics = {k: v for d in nested_pool_results  for k, v in d[DICTS][2].items()}
+    results_temp = [{k: v for k, v in d[DICTS][3].items()} for d in nested_pool_results]
 
-precisions_temp = [{k: v for k, v in d[DICTS][6].items()} for d in nested_pool_results]
-precisions = {d.name: [] for d in Miner}
-for d in precisions_temp:
-    for k in d:
-        precisions[k] += d[k]
 
-recalls_temp = [{k: v for k, v in d[DICTS][7].items()} for d in nested_pool_results]
-recalls = {d.name: [] for d in Miner}
-for d in recalls_temp:
-    for k in d:
-        recalls[k] += d[k]
+    for d in results_temp:
+        for k in d:
+            for k2 in d[k]:
+                results[k][k2] += d[k][k2]
+
+    precisions_temp = [{k: v for k, v in d[DICTS][6].items()} for d in nested_pool_results]
+    precisions = {d.name: [] for d in Miner}
+    for d in precisions_temp:
+        for k in d:
+            precisions[k] += d[k]
+
+    recalls_temp = [{k: v for k, v in d[DICTS][7].items()} for d in nested_pool_results]
+    recalls = {d.name: [] for d in Miner}
+    for d in recalls_temp:
+        for k in d:
+            recalls[k] += d[k]
+else:
+    i = -1
+    r = 1
+    for d in DATA:
+        for m in MINERS:
+            miner = m.name
+            if os.path.exists(f'{RESULT_PATH}/{build_result_path(miner, d, i, "soundness", r)}'):
+                s = import_list_from_json(f'{RESULT_PATH}/{build_result_path(miner, d, i, "soundness", r)}')[0]
+                results[miner][SOUNDNESS].append(s)
+            if os.path.exists(f'{RESULT_PATH}/{build_result_path(miner, d, i, "recall_align", r)}'):
+                align_fitness_score = \
+                import_list_from_json(f'{RESULT_PATH}/{build_result_path(miner, d, i, "recall_align", r)}')[0]
+                results[miner][RECALL_A].append(align_fitness_score)
+            if os.path.exists(f'{RESULT_PATH}/{build_result_path(miner, d, i, "precision_align", r)}'):
+                align_precision = \
+                import_list_from_json(f'{RESULT_PATH}/{build_result_path(miner, d, i, "precision_align", r)}')[0]
+                results[miner][PRECISION_A].append(align_precision)
+            if miner == "ocpd" and s:
+                pnml_path = build_path(d, miner, i, r, "pnml")
+                pn = pm4py.read_pnml(pnml_path)
+                # Repair silent action labels that incorrectly have a label after pm4py import
+                for t in pn[0].transitions:
+                    if t.label is not None and ("tau" in t.label or "skip" in t.label or "init" in t.label):
+                        t.label = None
+                wf_net = transform_to_wf_net(*pn)
+                log_read = pm4py.read_xes(f'{PATH}{d}/{d}_init_log.xes')
+                # PM4PY's easy soundness check: check_easy_soundness_net_in_fin_marking(net, ini, fin) in check_soundness.py
+                # shows erratic behavior such that alignments are sometimes not computed even if woflan has analysed the net
+                # to be sound
+                if isinstance(align_fitness_score, str):
+                    align_fitness = pm4py.fitness_alignments(log_read, *wf_net)
+                    align_fitness_score = align_fitness['log_fitness']
+                    results[miner][RECALL_A][-1] = align_fitness_score
+                if isinstance(align_precision, str):
+                    align_precision = pm4py.precision_alignments(log_read, *wf_net)
+                    results[miner][PRECISION_A][-1] = align_precision
 
 
 def format_spearman(cell):

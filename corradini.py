@@ -87,131 +87,40 @@ instance_dict = {
 def transform_to_corradini(event, d, agent1s_mapping, agent2s_mapping, agent3s):
     add_resource_to_event(event, d, agent1s_mapping, agent2s_mapping, agent3s)
     activity = event._dict[CONCEPT]
-    if activity.startswith("a"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "a" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "a"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-        else:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "a" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "a"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-    elif activity.startswith("b"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "b" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "b"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-        else:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "b" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "b"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
+    if activity.startswith("a") and "R" not in activity and "A" not in activity and "B" not in activity:
+        set_message_corradini(activity, event, "a")
+    elif activity.startswith("bR"):
+        set_message_corradini(activity, event, "bR")
+    elif activity.startswith("aR"):
+        set_message_corradini(activity, event, "aR")
+    elif activity.startswith("b") and "R" not in activity:
+        set_message_corradini(activity, event, "b")
     elif activity.startswith("c"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "c" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "c"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-        else:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "c" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "c"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
+        set_message_corradini(activity, event, "c")
     elif activity.startswith("d"):
-        if "?" in activity:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "d" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "d"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_REC
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-        else:
-            if len(activity) > 2:
-                event._dict[CORR_MSG_TYPE] = "d" + activity[2:]
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
-            else:
-                event._dict[CORR_MSG_TYPE] = "d"
-                event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
-                event._dict[CORR_COMM] = CORR_COMM_SEND
-                event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
-                event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
-                event._dict[CORR_MODE] = CORR_MODE_TYPE
+        set_message_corradini(activity, event, "d")
+    elif activity.startswith("ackA"):
+        set_message_corradini(activity, event, "ackA")
+    elif activity.startswith("ackB"):
+        set_message_corradini(activity, event, "ackB")
     return event
+
+
+def set_message_corradini(activity, event, act):
+    if "?" in activity:
+        event._dict[CORR_MSG_TYPE] = act
+        event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
+        event._dict[CORR_COMM] = CORR_COMM_REC
+        event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
+        event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
+        event._dict[CORR_MODE] = CORR_MODE_TYPE
+    else:
+        event._dict[CORR_MSG_TYPE] = act
+        event._dict[CORR_MSG_TYPE_ALIAS] = event._dict[CORR_MSG_TYPE]
+        event._dict[CORR_COMM] = CORR_COMM_SEND
+        event._dict[CORR_COMM_ALIAS] = event._dict[CORR_COMM]
+        event._dict[CORR_MSG_INSTANCE] = f"{event._dict[CORR_MSG_TYPE]}_{next(instance_dict[activity])}"
+        event._dict[CORR_MODE] = CORR_MODE_TYPE
 
 
 def discover_collaboration_bpmn(miner_input):

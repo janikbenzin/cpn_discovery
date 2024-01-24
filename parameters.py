@@ -8,6 +8,8 @@ RECALL_A_ALL = 'RA'
 PRECISION_A = 'P'
 SOUNDNESS = 'S'
 ORIG = 'reference'
+QUALITY_MODE = ""
+LOG_TRADITIONAL = ""
 
 LISTS = "lists"
 DICTS = "dicts"
@@ -30,7 +32,7 @@ LIU_PATH = "./liuetal/"
 CORRADINI_PATH = "./corradinietal/"
 
 
-WORKERS = 2  # 4
+WORKERS = 1  # 4
 
 class Miner(Enum):
     ocpd = "ocpd"
@@ -49,6 +51,12 @@ MSG_OT_1 = "msg_a_ot1"
 MSG_OT_2 = "msg_b_ot2"
 MSG_OT_3 = "msg_c_ot3"
 MSG_OT_4 = "msg_d_ot4"
+MSG_OT_5 = "msg_aR_ot5"
+MSG_OT_6 = "msg_bR_ot6"
+MSG_OT_7 = "msg_ackA_ot7"
+MSG_OT_8 = "msg_ackB_ot8"
+
+MESSAGE_OTS = [MSG_OT_1, MSG_OT_2, MSG_OT_3, MSG_OT_4, MSG_OT_5, MSG_OT_6, MSG_OT_7, MSG_OT_8]
 
 AGENT1 = "Agent1"
 AGENT2 = "Agent2"
