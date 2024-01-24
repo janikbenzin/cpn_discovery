@@ -11,6 +11,7 @@ import pickle
 
 import pandas as pd
 
+
 from parameters import *
 
 MODELS = 12
@@ -71,26 +72,31 @@ else:
                 align_precision = \
                 import_list_from_json(f'{RESULT_PATH}/{build_result_path(miner, d, i, "precision_align", r)}')[0]
                 results[miner][PRECISION_A].append(align_precision)
-            if miner == "ocpd" and s:
+            if miner == "ocpd":
                 pnml_path = build_path(d, miner, i, r, "pnml")
                 pn = pm4py.read_pnml(pnml_path)
+                if s or pm4py.objects.petri_net.utils.check_soundness.check_easy_soundness_net_in_fin_marking(*pn):
                 # Repair silent action labels that incorrectly have a label after pm4py import
-                for t in pn[0].transitions:
-                    if t.label is not None and ("tau" in t.label or "skip" in t.label or "init" in t.label):
-                        t.label = None
-                wf_net = transform_to_wf_net(*pn)
-                log_read = pm4py.read_xes(f'{PATH}{d}/{d}_init_log.xes')
-                # PM4PY's easy soundness check: check_easy_soundness_net_in_fin_marking(net, ini, fin) in check_soundness.py
-                # shows erratic behavior such that alignments are sometimes not computed even if woflan has analysed the net
-                # to be sound
-                if isinstance(align_fitness_score, str):
-                    align_fitness = pm4py.fitness_alignments(log_read, *wf_net)
-                    align_fitness_score = align_fitness['log_fitness']
-                    results[miner][RECALL_A][-1] = align_fitness_score
-                if isinstance(align_precision, str):
-                    align_precision = pm4py.precision_alignments(log_read, *wf_net)
-                    results[miner][PRECISION_A][-1] = align_precision
+                    for t in pn[0].transitions:
+                        if t.label is not None and ("tau" in t.label or "skip" in t.label or "init" in t.label):
+                            t.label = None
+                    wf_net = transform_to_wf_net(*pn)
+                    log_read = pm4py.read_xes(f'{PATH}{d}/{d}_init_log.xes')
+                    # PM4PY's easy soundness check: check_easy_soundness_net_in_fin_marking(net, ini, fin) in check_soundness.py
+                    # shows erratic behavior such that alignments are sometimes not computed even if woflan has analysed the net
+                    # to be sound
+                    if isinstance(align_fitness_score, str):
+                        print(f"{d} - Recomputing wrong fitness result...\n")
+                        align_fitness = pm4py.fitness_alignments(log_read, *wf_net)
+                        align_fitness_score = align_fitness['log_fitness']
+                        results[miner][RECALL_A][-1] = align_fitness_score
+                    if isinstance(align_precision, str):
+                        print(f"{d} - Recomputing wrong precision result...\n")
+                        align_precision = pm4py.precision_alignments(log_read, *wf_net)
+                        results[miner][PRECISION_A][-1] = align_precision
 
+with open(RESULT_PATH + f"results_{EXPERIMENT}.pickle", "wb") as file:
+    pickle.dump(results, file)
 
 def format_spearman(cell):
     if isinstance(cell, tuple):
