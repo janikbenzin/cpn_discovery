@@ -7,10 +7,9 @@ import traceback
 
 MODELS = 12
 DATA = [f"IP-{i + 1}" for i in range(MODELS)]
-DATA = ["IP-7", "IP-8", "IP-9", "IP-10", "IP-11", "IP-12"]
 EXPERIMENT = "PetriNetsPaper2024_alignments_original"
-MINERS = [Miner.ocpd]
-ORIGINAL = False
+MINERS = [Miner.ocpd, Miner.colliery, Miner.health]
+ORIGINAL = True
 
 def sampling_execution(input_tuple):
     pns = {}

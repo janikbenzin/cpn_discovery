@@ -17,7 +17,7 @@ from parameters import *
 MODELS = 12
 PICKLE = False
 DATA = [f"IP-{i + 1}" for i in range(MODELS)]
-MINERS = [Miner.ocpd, Miner.health, Miner.colliery]
+MINERS = [Miner.health, Miner.colliery, Miner.ocpd]
 EXPERIMENT = "PetriNetsPaper2024_alignments_original"
 
 
@@ -72,15 +72,25 @@ else:
                 align_precision = \
                 import_list_from_json(f'{RESULT_PATH}/{build_result_path(miner, d, i, "precision_align", r)}')[0]
                 results[miner][PRECISION_A].append(align_precision)
-            if miner == "ocpd":
+            if miner != "colliery":
                 pnml_path = build_path(d, miner, i, r, "pnml")
                 pn = pm4py.read_pnml(pnml_path)
-                if s or pm4py.objects.petri_net.utils.check_soundness.check_easy_soundness_net_in_fin_marking(*pn):
+                im = pn[1]
+                fm = pn[2]
+                if im is None or len(im) == 0:
+                    im = pm4py.objects.petri_net.utils.initial_marking.discover_initial_marking(pn[0])
+                if fm is None or len(fm) == 0:
+                    fm = pm4py.objects.petri_net.utils.final_marking.discover_final_marking(pn[0])
+                print(f"{d} - Testing soundness/easy soundness for {miner}\n")
+                es = pm4py.objects.petri_net.utils.check_soundness.check_easy_soundness_net_in_fin_marking(pn[0], im, fm)
+                if s or es:
                 # Repair silent action labels that incorrectly have a label after pm4py import
-                    for t in pn[0].transitions:
-                        if t.label is not None and ("tau" in t.label or "skip" in t.label or "init" in t.label):
-                            t.label = None
-                    wf_net = transform_to_wf_net(*pn)
+                    print(f"{d} - Sound {s} easy sound {es} for {miner} \n")
+                    if miner == "ocpd":
+                        for t in pn[0].transitions:
+                            if t.label is not None and ("tau" in t.label or "skip" in t.label or "init" in t.label):
+                                t.label = None
+                    wf_net = transform_to_wf_net(pn[0], im, fm)
                     log_read = pm4py.read_xes(f'{PATH}{d}/{d}_init_log.xes')
                     # PM4PY's easy soundness check: check_easy_soundness_net_in_fin_marking(net, ini, fin) in check_soundness.py
                     # shows erratic behavior such that alignments are sometimes not computed even if woflan has analysed the net

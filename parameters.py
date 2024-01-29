@@ -32,7 +32,7 @@ LIU_PATH = "./liuetal/"
 CORRADINI_PATH = "./corradinietal/"
 
 
-WORKERS = 1  # 4
+WORKERS = 2  # 4
 
 class Miner(Enum):
     ocpd = "ocpd"
