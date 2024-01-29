@@ -1,0 +1,9 @@
+/nohup.out2
+/results/*
+!/results/
+/petri_vis/*
+!/petri_vis/
+/tables/*
+!/tables/
+/artifacts/*
+!/artifacts/

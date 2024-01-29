@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="IP-1_sample_9_ratio_0.9" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>IP-1_sample_9_ratio_0.9</text>
+    </name>
+    <page id="n0">
+      <place id="p_9_agent_ot2">
+        <name>
+          <text>p_9_agent_ot2</text>
+        </name>
+      </place>
+      <place id="sink_agent_ot2">
+        <name>
+          <text>sink_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_6_agent_ot2">
+        <name>
+          <text>p_6_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_13_agent_ot2">
+        <name>
+          <text>p_13_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_22_agent_ot2">
+        <name>
+          <text>p_22_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_3_msg_a_ot1">
+        <name>
+          <text>p_3_msg_a_ot1</text>
+        </name>
+      </place>
+      <place id="p_17_agent_ot1">
+        <name>
+          <text>p_17_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_5_agent_ot1">
+        <name>
+          <text>p_5_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_10_agent_ot1">
+        <name>
+          <text>p_10_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_6_agent_ot1">
+        <name>
+          <text>p_6_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_12_agent_ot1">
+        <name>
+          <text>p_12_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_14_agent_ot2">
+        <name>
+          <text>p_14_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_15_agent_ot2">
+        <name>
+          <text>p_15_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_12_agent_ot2">
+        <name>
+          <text>p_12_agent_ot2</text>
+        </name>
+      </place>
+      <place id="source_agent_ot2">
+        <name>
+          <text>source_agent_ot2</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="p_7_agent_ot2">
+        <name>
+          <text>p_7_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_18_agent_ot1">
+        <name>
+          <text>p_18_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_18_agent_ot2">
+        <name>
+          <text>p_18_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_25_agent_ot2">
+        <name>
+          <text>p_25_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_23_agent_ot2">
+        <name>
+          <text>p_23_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_4_agent_ot2">
+        <name>
+          <text>p_4_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_7_agent_ot1">
+        <name>
+          <text>p_7_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_21_agent_ot2">
+        <name>
+          <text>p_21_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_5_agent_ot2">
+        <name>
+          <text>p_5_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_20_agent_ot2">
+        <name>
+          <text>p_20_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_24_agent_ot2">
+        <name>
+          <text>p_24_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_8_agent_ot1">
+        <name>
+          <text>p_8_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_9_agent_ot1">
+        <name>
+          <text>p_9_agent_ot1</text>
+        </name>
+      </place>
+      <place id="source_msg_a_ot1">
+        <name>
+          <text>source_msg_a_ot1</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink_msg_a_ot1">
+        <name>
+          <text>sink_msg_a_ot1</text>
+        </name>
+      </place>
+      <place id="p_20_agent_ot1">
+        <name>
+          <text>p_20_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_19_agent_ot1">
+        <name>
+          <text>p_19_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_13_agent_ot1">
+        <name>
+          <text>p_13_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_14_agent_ot1">
+        <name>
+          <text>p_14_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_11_agent_ot1">
+        <name>
+          <text>p_11_agent_ot1</text>
+        </name>
+      </place>
+      <place id="source_agent_ot1">
+        <name>
+          <text>source_agent_ot1</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="p_11_agent_ot2">
+        <name>
+          <text>p_11_agent_ot2</text>
+        </name>
+      </place>
+      <place id="sink_agent_ot1">
+        <name>
+          <text>sink_agent_ot1</text>
+        </name>
+      </place>
+      <place id="p_10_agent_ot2">
+        <name>
+          <text>p_10_agent_ot2</text>
+        </name>
+      </place>
+      <place id="p_19_agent_ot2">
+        <name>
+          <text>p_19_agent_ot2</text>
+        </name>
+      </place>
+      <transition id="bb778bec-c31b-4a1e-b643-6bd9b2525e24">
+        <name>
+          <text>e4</text>
+        </name>
+      </transition>
+      <transition id="c868a04e-31ff-42f5-86cb-6197f12235de">
+        <name>
+          <text>e8</text>
+        </name>
+      </transition>
+      <transition id="a3a66364-9e99-4b62-8a6e-eec4e9ce6612">
+        <name>
+          <text>e7</text>
+        </name>
+      </transition>
+      <transition id="a8edaf4c-5cf2-47f5-8800-d144fa396e6e">
+        <name>
+          <text>e10</text>
+        </name>
+      </transition>
+      <transition id="29c5fce7-ead1-4c84-bf9b-09438d64d237">
+        <name>
+          <text>t6</text>
+        </name>
+      </transition>
+      <transition id="612bb020-045a-40a3-b99e-79b1d324cdaa">
+        <name>
+          <text>a!_2</text>
+        </name>
+      </transition>
+      <transition id="b984cc57-c99b-4e99-91d5-6837b038f90a">
+        <name>
+          <text>t3</text>
+        </name>
+      </transition>
+      <transition id="634ab9af-84f3-4821-b9d7-8fc61164080a">
+        <name>
+          <text>t9</text>
+        </name>
+      </transition>
+      <transition id="69a7012f-004d-4042-a151-62c739e26887">
+        <name>
+          <text>t14</text>
+        </name>
+      </transition>
+      <transition id="c222e331-1b34-4f02-9701-b451a4eee631">
+        <name>
+          <text>a?_1</text>
+        </name>
+      </transition>
+      <transition id="tauSplit_1_agent_ot2">
+        <name>
+          <text></text>
+        </name>
+      </transition>
+      <transition id="5fcc05c9-0b34-4ef7-b064-963c2c5a35b1">
+        <name>
+          <text>e15</text>
+        </name>
+      </transition>
+      <transition id="3ac3796e-b49d-4e96-a1ea-e53139af0898">
+        <name>
+          <text>e5</text>
+        </name>
+      </transition>
+      <transition id="53e40d83-eff8-41bc-b41f-85c48d26b3d7">
+        <name>
+          <text>e11</text>
+        </name>
+      </transition>
+      <transition id="d0d1e717-8684-47a0-91f3-1bf12ed70e49">
+        <name>
+          <text>e1</text>
+        </name>
+      </transition>
+      <transition id="d5c90f1c-8871-4a82-901e-bcbad2b981e4">
+        <name>
+          <text>e6</text>
+        </name>
+      </transition>
+      <transition id="1e78a0ac-19a3-404c-9797-54f16cfc2996">
+        <name>
+          <text>e12</text>
+        </name>
+      </transition>
+      <transition id="6f90673f-1d7c-471c-8a79-81a2bceb8985">
+        <name>
+          <text>e9</text>
+        </name>
+      </transition>
+      <transition id="87c4a875-a0eb-46a1-8d8b-b4b4dbb484e4">
+        <name>
+          <text>a?_2</text>
+        </name>
+      </transition>
+      <transition id="255dbf96-87a8-4b2b-be3d-bd340125ae29">
+        <name>
+          <text>t10</text>
+        </name>
+      </transition>
+      <transition id="d8b0eb7d-4d2d-4188-acc8-0bfe226b18fc">
+        <name>
+          <text>t13</text>
+        </name>
+      </transition>
+      <transition id="429670b9-eddb-414d-a3f8-e756b1ba65fc">
+        <name>
+          <text>t1</text>
+        </name>
+      </transition>
+      <transition id="589d69e2-5a95-4187-8e19-0cd1290ecc08">
+        <name>
+          <text>t12</text>
+        </name>
+      </transition>
+      <transition id="f88a4d92-cdec-4f23-855d-3957e36d1f72">
+        <name>
+          <text>t2</text>
+        </name>
+      </transition>
+      <transition id="ac56b59f-9bc2-424c-b127-b9854ec01502">
+        <name>
+          <text>t4</text>
+        </name>
+      </transition>
+      <transition id="4fe99327-e953-4009-afb6-220f55c4d5fa">
+        <name>
+          <text>t5</text>
+        </name>
+      </transition>
+      <transition id="b4884eb5-99f7-4b5d-9d2e-f6afeaef5236">
+        <name>
+          <text>a!_1</text>
+        </name>
+      </transition>
+      <transition id="6b0d5f7e-d10c-447c-8a6d-605456fa791b">
+        <name>
+          <text>t11</text>
+        </name>
+      </transition>
+      <transition id="b4fdf946-1453-4f90-b4fd-d97ddbca4f0e">
+        <name>
+          <text>e3</text>
+        </name>
+      </transition>
+      <transition id="ec7a90cb-195c-4fe5-a497-f46a563a26d5">
+        <name>
+          <text>e14</text>
+        </name>
+      </transition>
+      <transition id="679221d5-9570-4f36-9251-1c8361e75b00">
+        <name>
+          <text>e13</text>
+        </name>
+      </transition>
+      <transition id="tauJoin_2_agent_ot2">
+        <name>
+          <text></text>
+        </name>
+      </transition>
+      <transition id="48fc6ffa-1411-464e-9d74-68ad8818b338">
+        <name>
+          <text>e2</text>
+        </name>
+      </transition>
+      <arc id="140417261757968" source="p_18_agent_ot2" target="1e78a0ac-19a3-404c-9797-54f16cfc2996"/>
+      <arc id="140417793019408" source="612bb020-045a-40a3-b99e-79b1d324cdaa" target="p_14_agent_ot1"/>
+      <arc id="140417267432976" source="429670b9-eddb-414d-a3f8-e756b1ba65fc" target="p_7_agent_ot1"/>
+      <arc id="140417793020432" source="p_10_agent_ot1" target="b4884eb5-99f7-4b5d-9d2e-f6afeaef5236"/>
+      <arc id="140417267428880" source="p_20_agent_ot1" target="69a7012f-004d-4042-a151-62c739e26887"/>
+      <arc id="140417267431440" source="d8b0eb7d-4d2d-4188-acc8-0bfe226b18fc" target="p_18_agent_ot1"/>
+      <arc id="140417266067984" source="p_9_agent_ot2" target="b4fdf946-1453-4f90-b4fd-d97ddbca4f0e"/>
+      <arc id="140417261755408" source="p_10_agent_ot2" target="3ac3796e-b49d-4e96-a1ea-e53139af0898"/>
+      <arc id="140417261759504" source="p_23_agent_ot2" target="6f90673f-1d7c-471c-8a79-81a2bceb8985"/>
+      <arc id="140417167937040" source="87c4a875-a0eb-46a1-8d8b-b4b4dbb484e4" target="sink_msg_a_ot1"/>
+      <arc id="140417266071568" source="d0d1e717-8684-47a0-91f3-1bf12ed70e49" target="p_5_agent_ot2"/>
+      <arc id="140417266057936" source="p_6_agent_ot2" target="48fc6ffa-1411-464e-9d74-68ad8818b338"/>
+      <arc id="140417266062416" source="b4fdf946-1453-4f90-b4fd-d97ddbca4f0e" target="p_10_agent_ot2"/>
+      <arc id="140417261757520" source="tauJoin_2_agent_ot2" target="p_11_agent_ot2"/>
+      <arc id="140417266065488" source="tauSplit_1_agent_ot2" target="p_4_agent_ot2"/>
+      <arc id="140417839806032" source="4fe99327-e953-4009-afb6-220f55c4d5fa" target="p_10_agent_ot1"/>
+      <arc id="140417793019472" source="p_13_agent_ot1" target="612bb020-045a-40a3-b99e-79b1d324cdaa"/>
+      <arc id="140417793025104" source="29c5fce7-ead1-4c84-bf9b-09438d64d237" target="p_13_agent_ot1"/>
+      <arc id="140417170018384" source="f88a4d92-cdec-4f23-855d-3957e36d1f72" target="p_6_agent_ot1"/>
+      <arc id="140417304967760" source="87c4a875-a0eb-46a1-8d8b-b4b4dbb484e4" target="p_23_agent_ot2"/>
+      <arc id="140417266059856" source="tauSplit_1_agent_ot2" target="p_6_agent_ot2"/>
+      <arc id="140417304955984" source="612bb020-045a-40a3-b99e-79b1d324cdaa" target="p_3_msg_a_ot1"/>
+      <arc id="140417267432784" source="p_6_agent_ot1" target="ac56b59f-9bc2-424c-b127-b9854ec01502"/>
+      <arc id="140417261762192" source="p_23_agent_ot2" target="a8edaf4c-5cf2-47f5-8800-d144fa396e6e"/>
+      <arc id="140417267433104" source="429670b9-eddb-414d-a3f8-e756b1ba65fc" target="p_5_agent_ot1"/>
+      <arc id="140417170027664" source="p_5_agent_ot1" target="f88a4d92-cdec-4f23-855d-3957e36d1f72"/>
+      <arc id="140417267429008" source="p_18_agent_ot1" target="69a7012f-004d-4042-a151-62c739e26887"/>
+      <arc id="140417841387664" source="p_7_agent_ot1" target="b984cc57-c99b-4e99-91d5-6837b038f90a"/>
+      <arc id="140417839794320" source="ac56b59f-9bc2-424c-b127-b9854ec01502" target="p_9_agent_ot1"/>
+      <arc id="140417261751952" source="c868a04e-31ff-42f5-86cb-6197f12235de" target="p_20_agent_ot2"/>
+      <arc id="140417267430032" source="p_19_agent_ot1" target="589d69e2-5a95-4187-8e19-0cd1290ecc08"/>
+      <arc id="140417261762704" source="679221d5-9570-4f36-9251-1c8361e75b00" target="sink_agent_ot2"/>
+      <arc id="140417790350480" source="p_3_msg_a_ot1" target="c222e331-1b34-4f02-9701-b451a4eee631"/>
+      <arc id="140417261752016" source="c868a04e-31ff-42f5-86cb-6197f12235de" target="p_18_agent_ot2"/>
+      <arc id="140417266066128" source="d5c90f1c-8871-4a82-901e-bcbad2b981e4" target="p_14_agent_ot2"/>
+      <arc id="140417261748944" source="a3a66364-9e99-4b62-8a6e-eec4e9ce6612" target="p_22_agent_ot2"/>
+      <arc id="140417266063056" source="p_4_agent_ot2" target="d0d1e717-8684-47a0-91f3-1bf12ed70e49"/>
+      <arc id="140417261755600" source="p_19_agent_ot2" target="5fcc05c9-0b34-4ef7-b064-963c2c5a35b1"/>
+      <arc id="140417841385680" source="b984cc57-c99b-4e99-91d5-6837b038f90a" target="p_8_agent_ot1"/>
+      <arc id="140417793025232" source="255dbf96-87a8-4b2b-be3d-bd340125ae29" target="sink_agent_ot1"/>
+      <arc id="140417267431632" source="p_17_agent_ot1" target="d8b0eb7d-4d2d-4188-acc8-0bfe226b18fc"/>
+      <arc id="140417793026768" source="p_9_agent_ot1" target="29c5fce7-ead1-4c84-bf9b-09438d64d237"/>
+      <arc id="140417304967888" source="c222e331-1b34-4f02-9701-b451a4eee631" target="p_15_agent_ot2"/>
+      <arc id="140417167948048" source="p_3_msg_a_ot1" target="87c4a875-a0eb-46a1-8d8b-b4b4dbb484e4"/>
+      <arc id="140417304967440" source="p_14_agent_ot2" target="c222e331-1b34-4f02-9701-b451a4eee631"/>
+      <arc id="140417266063632" source="48fc6ffa-1411-464e-9d74-68ad8818b338" target="p_7_agent_ot2"/>
+      <arc id="140417266068240" source="bb778bec-c31b-4a1e-b643-6bd9b2525e24" target="p_12_agent_ot2"/>
+      <arc id="140417304968464" source="source_msg_a_ot1" target="b4884eb5-99f7-4b5d-9d2e-f6afeaef5236"/>
+      <arc id="140417266073360" source="p_11_agent_ot2" target="bb778bec-c31b-4a1e-b643-6bd9b2525e24"/>
+      <arc id="140417261752592" source="tauJoin_2_agent_ot2" target="p_9_agent_ot2"/>
+      <arc id="140417261757200" source="p_24_agent_ot2" target="ec7a90cb-195c-4fe5-a497-f46a563a26d5"/>
+      <arc id="140417261760336" source="p_25_agent_ot2" target="679221d5-9570-4f36-9251-1c8361e75b00"/>
+      <arc id="140417793020240" source="p_11_agent_ot1" target="634ab9af-84f3-4821-b9d7-8fc61164080a"/>
+      <arc id="140417261748560" source="a8edaf4c-5cf2-47f5-8800-d144fa396e6e" target="p_24_agent_ot2"/>
+      <arc id="140417261757264" source="p_20_agent_ot2" target="53e40d83-eff8-41bc-b41f-85c48d26b3d7"/>
+      <arc id="140417790350672" source="c222e331-1b34-4f02-9701-b451a4eee631" target="sink_msg_a_ot1"/>
+      <arc id="140417261762384" source="5fcc05c9-0b34-4ef7-b064-963c2c5a35b1" target="sink_agent_ot2"/>
+      <arc id="140417793030992" source="b4884eb5-99f7-4b5d-9d2e-f6afeaef5236" target="p_11_agent_ot1"/>
+      <arc id="140417267429200" source="p_8_agent_ot1" target="ac56b59f-9bc2-424c-b127-b9854ec01502"/>
+      <arc id="140417267132752" source="p_14_agent_ot1" target="6b0d5f7e-d10c-447c-8a6d-605456fa791b"/>
+      <arc id="140417266071888" source="p_5_agent_ot2" target="tauJoin_2_agent_ot2"/>
+      <arc id="140417793030032" source="634ab9af-84f3-4821-b9d7-8fc61164080a" target="p_12_agent_ot1"/>
+      <arc id="140417267425168" source="6b0d5f7e-d10c-447c-8a6d-605456fa791b" target="p_17_agent_ot1"/>
+      <arc id="140417839807888" source="p_9_agent_ot1" target="4fe99327-e953-4009-afb6-220f55c4d5fa"/>
+      <arc id="140417304956304" source="b4884eb5-99f7-4b5d-9d2e-f6afeaef5236" target="p_3_msg_a_ot1"/>
+      <arc id="140417839796112" source="p_15_agent_ot2" target="c868a04e-31ff-42f5-86cb-6197f12235de"/>
+      <arc id="140417267429776" source="589d69e2-5a95-4187-8e19-0cd1290ecc08" target="p_20_agent_ot1"/>
+      <arc id="140417266058128" source="3ac3796e-b49d-4e96-a1ea-e53139af0898" target="p_13_agent_ot2"/>
+      <arc id="140417261748624" source="53e40d83-eff8-41bc-b41f-85c48d26b3d7" target="p_21_agent_ot2"/>
+      <arc id="140417261756816" source="p_21_agent_ot2" target="5fcc05c9-0b34-4ef7-b064-963c2c5a35b1"/>
+      <arc id="140417261760400" source="p_12_agent_ot2" target="3ac3796e-b49d-4e96-a1ea-e53139af0898"/>
+      <arc id="140417266057808" source="p_7_agent_ot2" target="tauJoin_2_agent_ot2"/>
+      <arc id="140417304969168" source="p_22_agent_ot2" target="87c4a875-a0eb-46a1-8d8b-b4b4dbb484e4"/>
+      <arc id="140417261762000" source="ec7a90cb-195c-4fe5-a497-f46a563a26d5" target="sink_agent_ot2"/>
+      <arc id="140417261760464" source="p_13_agent_ot2" target="a3a66364-9e99-4b62-8a6e-eec4e9ce6612"/>
+      <arc id="140417261758416" source="1e78a0ac-19a3-404c-9797-54f16cfc2996" target="p_19_agent_ot2"/>
+      <arc id="140417267429840" source="6b0d5f7e-d10c-447c-8a6d-605456fa791b" target="p_19_agent_ot1"/>
+      <arc id="140417834972624" source="source_agent_ot1" target="429670b9-eddb-414d-a3f8-e756b1ba65fc"/>
+      <arc id="140417793022416" source="p_12_agent_ot1" target="255dbf96-87a8-4b2b-be3d-bd340125ae29"/>
+      <arc id="140417267428304" source="69a7012f-004d-4042-a151-62c739e26887" target="sink_agent_ot1"/>
+      <arc id="140417266064336" source="source_agent_ot2" target="tauSplit_1_agent_ot2"/>
+      <arc id="140417266067408" source="p_13_agent_ot2" target="d5c90f1c-8871-4a82-901e-bcbad2b981e4"/>
+      <arc id="140417304968400" source="source_msg_a_ot1" target="612bb020-045a-40a3-b99e-79b1d324cdaa"/>
+      <arc id="140417261755856" source="6f90673f-1d7c-471c-8a79-81a2bceb8985" target="p_25_agent_ot2"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink_agent_ot1">
+          <text>1</text>
+        </place>
+        <place idref="sink_msg_a_ot1">
+          <text>1</text>
+        </place>
+        <place idref="sink_agent_ot2">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>
